@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Executando verificações pré-push..."
+
+# Roda build para garantir que compila
+echo "🏗️  Executando build..."
+yarn build
+if [ $? -ne 0 ]; then
+  echo "❌ Build falhou! Corrija os erros antes de fazer push."
+  exit 1
+fi
+
+echo "✅ Todas as verificações passaram! Push liberado." 

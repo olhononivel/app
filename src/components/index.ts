@@ -1,0 +1,17 @@
+export * from "@/components/auth/login-button";
+export * from "@/components/auth/login-form";
+export * from "@/components/auth/register-form";
+export * from "@/components/header";
+export * from "@/components/landingPage/headerLP";
+export { ScrollButton } from "@/components/landingPage/scrollButton";
+export * from "@/components/landingPage/scrollToTop";
+export * from "@/components/landingPage/steps";
+export * from "@/components/landingPage/sections/benefits";
+export * from "@/components/landingPage/sections/cta";
+export * from "@/components/landingPage/sections/faq";
+export * from "@/components/landingPage/sections/footer";
+export * from "@/components/landingPage/sections/hero";
+export * from "@/components/landingPage/sections/howItWorks";
+export * from "@/components/landingPage/sections/prices";
+export * from "@/components/landingPage/sections/testimonials";
+export * from "@/components/sidebar";

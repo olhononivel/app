@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id                String             @id @default(cuid())
+  name              String?
+  email             String             @unique
+  phone             String?
+  emailVerified     DateTime?
+  image             String?
+  password          String?
+  role              UserRole           @default(USER)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  accounts          Account[]
+  monitoring        UserDevice[]
+  pushSubscriptions PushSubscription[] @relation("UserPushSubscriptions")
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expires   DateTime
+  createdAt DateTime @default(now())
+
+  @@unique([email, token])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expires   DateTime
+  createdAt DateTime @default(now())
+
+  @@unique([email, token])
+}
+
+model Device {
+  id            String               @id @default(cuid())
+  active        Boolean              @default(false)
+  name          String
+  capacityTank  Int
+  code          String               @unique
+  loraAddress   String
+  loraSerial    String
+  city          String
+  street        String
+  number        String?
+  district      String
+  zipCode       String
+  complement    String?
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  deviceData    DeviceData[]
+  notifications DeviceNotification[]
+  monitors      UserDevice[]
+}
+
+model DeviceNotification {
+  id         String   @id @default(cuid())
+  level      Int      @default(0)
+  statusSend Boolean  @default(false)
+  deviceId   String
+  createdAt  DateTime @default(now())
+  device     Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+}
+
+model DeviceData {
+  id        String   @id @default(cuid())
+  deviceId  String
+  level     Int      @default(0)
+  pumps     Json
+  createdAt DateTime @default(now())
+  device    Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+}
+
+model UserDevice {
+  userId        String
+  deviceId      String
+  receiveAlerts Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  device        Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, deviceId])
+}
+
+model DeviceActivation {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  deviceId  String
+  createdAt DateTime @default(now())
+
+  @@unique([deviceId, token])
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  endpoint  String
+  p256dh    String
+  auth      String
+  deviceId  String   @unique // Unique device identifier for this subscription
+  userId    String? // Optional user association
+  user      User?    @relation("UserPushSubscriptions", fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([deviceId])
+  @@index([userId])
+  @@map("push_subscriptions")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum StatusDevice {
+  ON
+  OFF
+}

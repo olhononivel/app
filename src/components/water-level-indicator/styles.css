@@ -1,0 +1,112 @@
+.water-waves {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 200%; /* O dobro do tamanho da tela para garantir um loop contínuo */
+  height: 100%;
+  opacity: 0.6;
+  animation: waveMove infinite alternate-reverse;
+}
+
+.wave1 {
+  /* Azul escuro */
+  fill: rgb(0, 0, 103);
+  animation-duration: 10s;
+  width: 200%; /* O dobro do tamanho da tela para garantir um loop contínuo */
+}
+
+.wave2 {
+  /* Azul médio */
+  fill: rgb(0, 0, 197);
+  animation-duration: 12s;
+  /* animation-direction: reverse; */
+  width: 200%; /* O dobro do tamanho da tela para garantir um loop contínuo */
+
+}
+
+.wave3 {
+  /* Azul claro */
+  fill: rgb(0, 0, 255);
+  animation-duration: 14s;
+  width: 200%; /* O dobro do tamanho da tela para garantir um loop contínuo */
+
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Surface shine (simula brilho na superfície da água) */
+.surface-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: surface-shine 4s ease-in-out infinite;
+}
+
+@keyframes surface-shine {
+  0%, 100% {
+    opacity: 0.2;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(100%);
+  }
+}
+
+/* Bubbles Animation */
+.bubble-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: bubble-rise 5s ease-in-out infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translate(0, 100%) scale(0.3);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(0, 90%) scale(0.5);
+  }
+  100% {
+    transform: translate(0, -100%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Add a subtle wobble to bubbles */
+.bubble {
+  animation: bubble-wobble 3s ease-in-out infinite;
+}
+
+@keyframes bubble-wobble {
+  0%, 100% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 5px;
+  }
+}
