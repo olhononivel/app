@@ -40,6 +40,7 @@ export function LoginForm() {
 	});
 
 	const [isPending, startTransition] = useTransition();
+	const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const searchParams = useSearchParams();
 	const urlError = searchParams.get("error") === "OAuthAccountNotLinked"
@@ -81,8 +82,14 @@ export function LoginForm() {
 	};
 
 	const handleGoogleLogin = () => {
+		setIsGoogleLoading(true);
 		signIn("google", {
 			callbackUrl: DEFAULT_LOGIN_REDIRECT,
+		}).finally(() => {
+			// Reset loading state after a delay to ensure the redirect happens
+			setTimeout(() => {
+				setIsGoogleLoading(false);
+			}, 2000);
 		});
 	};
 
@@ -125,15 +132,26 @@ export function LoginForm() {
 					{/* Google Login moderno */}
 					<button
 						onClick={handleGoogleLogin}
-						disabled={isPending}
-						className="group relative w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 hover:border-blue-300 rounded-2xl p-4 mb-6 transition-all duration-300 hover:shadow-lg overflow-hidden"
+						disabled={isPending || isGoogleLoading}
+						className="group relative w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 hover:border-blue-300 rounded-2xl p-4 mb-6 transition-all duration-300 hover:shadow-lg overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						<div className="absolute inset-0 bg-linear-to-r from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 						<div className="relative z-10 flex items-center justify-center space-x-3">
-							<Image width={24} height={24} src="/icons/google.png" alt="Google" className="group-hover:scale-110 transition-transform duration-300" />
-							<span className="font-semibold text-gray-700 group-hover:text-blue-600 transition-colors duration-300">
-								{text.signInWithGoogle}
-							</span>
+							{isGoogleLoading ? (
+								<>
+									<div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+									<span className="font-semibold text-gray-700">
+										Conectando com Google...
+									</span>
+								</>
+							) : (
+								<>
+									<Image width={24} height={24} src="/icons/google.png" alt="Google" className="group-hover:scale-110 transition-transform duration-300" />
+									<span className="font-semibold text-gray-700 group-hover:text-blue-600 transition-colors duration-300">
+										{text.signInWithGoogle}
+									</span>
+								</>
+							)}
 						</div>
 					</button>
 
@@ -161,8 +179,8 @@ export function LoginForm() {
 									{...form.register("email")}
 									id="LoggingEmailAddress"
 									className={`w-full px-4 py-4 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${form.formState.errors.email
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									type="email"
 									placeholder="seu@email.com"
@@ -198,8 +216,8 @@ export function LoginForm() {
 									{...form.register("password")}
 									id="loggingPassword"
 									className={`w-full px-4 py-4 pr-12 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${form.formState.errors.password
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									placeholder="••••••••"
 									type={showPassword ? "text" : "password"}

@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const user = await auth();
 
   // verifica se o usuario esta logado ou a req em ambiente de desenvolvimento
-  if (!user && process.env.NODE_ENV !== 'development') {
+  if (!user) {
     return Response.json({ error: 'Usuário não encontrado', data: null }, { status: 401 });
   }
 
