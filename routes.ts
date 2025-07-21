@@ -3,6 +3,7 @@
  * @type {string[]}
  */
 export const publicRoutes: string[] = [
+	'/',
 	'/privacy-policy',
 	'/terms-of-use',
 	'/auth/new-verification',
