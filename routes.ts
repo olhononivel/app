@@ -3,14 +3,14 @@
  * @type {string[]}
  */
 export const publicRoutes: string[] = [
-	'/',
+	'/privacy-policy',
 	'/terms-of-use',
 	'/auth/new-verification',
 	'/auth/device/active-device',
 	'/api/device/add-new-device',
-	'/api/device/link-device',
-	'/api/device/add-subscribe-monitoring',
-	'/api/device/device-data',
+	// '/api/device/link-device',
+	// '/api/device/add-subscribe-monitoring',
+	// '/api/device/device-data',
 	'/api/device/save-data-device',
 ];
 
