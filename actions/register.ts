@@ -7,8 +7,8 @@ import bcryptjs from "bcryptjs";
 import * as z from "zod";
 import { RegisterSchema } from '../schemas';
 
-import { generateVerificationToken } from "@/lib/tokens";
 import { sendVerificationEmail } from "@/lib/mail";
+import { generateVerificationToken } from "@/lib/tokens";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
 	const validatedFields = RegisterSchema.safeParse(values);
@@ -25,10 +25,15 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 	if (existingUser && !existingUser.emailVerified) {
 		const verificationToken = await generateVerificationToken(email);
 
-		sendVerificationEmail(
-			verificationToken.email,
-			verificationToken.token
-		);
+		try {
+			await sendVerificationEmail(
+				verificationToken.email,
+				verificationToken.token
+			);
+		} catch (error) {
+			return { error: true, message: "Erro ao enviar email de confirmação!" };
+		}
+
 		return { success: true, message: "Você já possui uma conta, enviamos um novo email de verificação!" };
 	}
 
@@ -46,10 +51,14 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 
 	const verificationToken = await generateVerificationToken(email);
 
-	sendVerificationEmail(
-		verificationToken.email,
-		verificationToken.token
-	);
+	try {
+		await sendVerificationEmail(
+			verificationToken.email,
+			verificationToken.token
+		);
 
-	return { success: true, message: "Email de confirmação enviado, verifique sua caixa de entrada!" };
+		return { success: true, message: "Email de confirmação enviado, verifique sua caixa de entrada!" };
+	} catch (error) {
+		return { error: true, message: "Erro ao enviar email de confirmação!" };
+	}
 }
