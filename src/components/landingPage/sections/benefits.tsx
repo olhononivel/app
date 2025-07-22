@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Benefits() {
 	const benefits = [
 		{
@@ -5,42 +7,48 @@ export function Benefits() {
 			description: "Evite desperdícios e reduza sua conta de água monitorando o consumo em tempo real.",
 			icon: "💧",
 			color: "from-blue-500 to-cyan-500",
-			stats: "Até 30% economia"
+			stats: "Até 30% economia",
+			route: "/benefits/economia-agua"
 		},
 		{
 			title: "Tranquilidade Total",
 			description: "Nunca mais se preocupe em ficar sem água. Receba alertas antes que isso aconteça.",
 			icon: "🛡️",
 			color: "from-green-500 to-emerald-500",
-			stats: "Alertas 24/7"
+			stats: "Alertas 24/7",
+			route: "/benefits/tranquilidade"
 		},
 		{
 			title: "Instalação Fácil",
 			description: "Sem necessidade de técnico especializado. Instale você mesmo em poucos minutos.",
 			icon: "⚡",
 			color: "from-yellow-500 to-orange-500",
-			stats: "5 min setup"
+			stats: "5 min setup",
+			route: "/benefits/instalacao-facil"
 		},
 		{
 			title: "Monitoramento Remoto",
 			description: "Acompanhe sua caixa d'água de qualquer lugar através do aplicativo móvel.",
 			icon: "📱",
 			color: "from-purple-500 to-pink-500",
-			stats: "Acesso global"
+			stats: "Acesso global",
+			route: "/benefits/monitoramento-remoto"
 		},
 		{
 			title: "Alertas Inteligentes",
 			description: "Notificações personalizadas por SMS, email ou push notification no app.",
 			icon: "🔔",
 			color: "from-red-500 to-rose-500",
-			stats: "Multi-canais"
+			stats: "Multi-canais",
+			route: "/benefits/alertas-inteligentes"
 		},
 		{
 			title: "Histórico Completo",
 			description: "Acesse relatórios detalhados do consumo e identifique padrões de uso.",
 			icon: "📊",
 			color: "from-indigo-500 to-blue-500",
-			stats: "Dados ilimitados"
+			stats: "Dados ilimitados",
+			route: "/benefits/historico-completo"
 		}
 	];
 
@@ -108,12 +116,15 @@ export function Benefits() {
 									</p>
 
 									{/* CTA sutil */}
-									<button className="group/btn flex items-center text-sm font-semibold text-blue-600 hover:text-purple-600 transition-colors duration-300">
+									<Link
+										href={benefit.route}
+										className="group/btn flex items-center text-sm font-semibold text-blue-600 hover:text-purple-600 transition-colors duration-300"
+									>
 										Saiba mais
 										<svg className="ml-1 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
 										</svg>
-									</button>
+									</Link>
 								</div>
 							</div>
 						))}
