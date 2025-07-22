@@ -31,9 +31,7 @@ export function HeaderLP() {
 					<div className="flex items-center justify-between h-16 @lg:h-20">
 						{/* Logo */}
 						<div className="flex-shrink-0">
-							<Link href="/" className="group block">
-								<Logo />
-							</Link>
+							<Logo />
 						</div>
 
 						{/* Menu Desktop */}

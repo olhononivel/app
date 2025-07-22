@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../../public/images/logo.svg";
+import logo from "../../../public/images/water-tank.svg";
 
 const ErrorCard = () => {
 	return (
-		<div className="@container min-h-screen flex items-center justify-center p-4">
+		<div className="min-h-screen flex items-center justify-center">
 			<div className="w-full max-w-lg mx-auto">
 				<div className="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl shadow-gray-900/10 border border-white/20 p-8 md:p-12 overflow-hidden text-center">
 					{/* Background gradient interno */}
 					<div className="absolute inset-0 bg-linear-to-br from-red-50 via-white to-orange-50 opacity-70"></div>
 
-					<div className="relative z-10">
+					<div className="relative z-10 gap-2">
 						{/* Logo com ícone de erro */}
 						<div className="relative mb-8">
 							<Image
@@ -43,7 +43,7 @@ const ErrorCard = () => {
 						</p>
 
 						{/* Status de erro */}
-						<div className="inline-flex items-center px-4 py-2 rounded-full bg-red-100 text-red-700 text-sm font-medium mb-8">
+						<div className="inline-flex items-center mr-2 px-4 py-2 rounded-full bg-red-100 text-red-700 text-sm font-medium mb-8">
 							<svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
 								<path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
 							</svg>
