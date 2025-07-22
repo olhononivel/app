@@ -85,6 +85,8 @@ export function LoginForm() {
 		setIsGoogleLoading(true);
 		signIn("google", {
 			callbackUrl: DEFAULT_LOGIN_REDIRECT,
+		}).catch((error) => {
+			console.error("Erro no login:", error);
 		}).finally(() => {
 			// Reset loading state after a delay to ensure the redirect happens
 			setTimeout(() => {
