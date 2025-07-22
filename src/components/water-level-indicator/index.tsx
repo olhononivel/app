@@ -13,6 +13,8 @@ import pump from "../../../public/images/pump-water.png";
 interface WaterLevelIndicatorProps {
 	device: Device;
 	dataDevice: CurrentDeviceDataType;
+	onRefresh?: () => Promise<void>;
+	isRefreshing?: boolean;
 }
 
 // Componente de Card Moderno para Dados
@@ -114,6 +116,8 @@ interface ModernWaterLevelIndicatorProps {
 	code: string;
 	name: string;
 	formattedDate: string;
+	onRefresh?: () => Promise<void>;
+	isRefreshing?: boolean;
 }
 
 // Componente do Indicador de Nível Moderno
@@ -123,7 +127,9 @@ const ModernWaterLevelIndicator = ({
 	totalCapacity,
 	code,
 	name,
-	formattedDate
+	formattedDate,
+	onRefresh,
+	isRefreshing = false
 }: ModernWaterLevelIndicatorProps) => {
 	const defineColor = (percentage: number) => {
 		if (percentage <= 25) return "bg-red-400";
@@ -140,9 +146,28 @@ const ModernWaterLevelIndicator = ({
 					<h2 className="text-lg font-bold text-gray-900">{name}</h2>
 					<p className="text-sm text-gray-500">{code}</p>
 				</div>
-				<div className="text-right">
-					<div className="text-2xl font-bold text-blue-600">{percentage}%</div>
-					<div className="text-xs text-gray-500">do total</div>
+				<div className="flex items-center gap-4">
+					{/* Botão de Atualizar */}
+					{onRefresh && (
+						<button
+							onClick={onRefresh}
+							disabled={isRefreshing}
+							className="group p-2 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+							title="Atualizar dados"
+						>
+							{isRefreshing ? (
+								<div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+							) : (
+								<svg className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+								</svg>
+							)}
+						</button>
+					)}
+					<div className="text-right">
+						<div className="text-2xl font-bold text-blue-600">{percentage}%</div>
+						<div className="text-xs text-gray-500">do total</div>
+					</div>
 				</div>
 			</div>
 
@@ -170,17 +195,25 @@ const ModernWaterLevelIndicator = ({
 							strokeLinecap="round"
 							strokeDasharray={`${2 * Math.PI * 50}`}
 							strokeDashoffset={`${2 * Math.PI * 50 * (1 - percentage / 100)}`}
-							className="transition-all duration-1000 ease-out"
+							className={`transition-all duration-1000 ease-out ${isRefreshing ? 'animate-pulse' : ''}`}
 						/>
 					</svg>
 
 					{/* Ícone central */}
 					<div className="absolute inset-0 flex items-center justify-center">
-						<div className="text-blue-500">
-							<svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 2C12 2 4 10 4 16C4 20 7 22 12 22C17 22 20 20 20 16C20 10 12 2 12 2Z" />
-							</svg>
-						</div>
+						{isRefreshing ? (
+							<div className="text-blue-500 animate-spin">
+								<svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+								</svg>
+							</div>
+						) : (
+							<div className="text-blue-500">
+								<svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+									<path d="M12 2C12 2 4 10 4 16C4 20 7 22 12 22C17 22 20 20 20 16C20 10 12 2 12 2Z" />
+								</svg>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
@@ -211,8 +244,15 @@ const ModernWaterLevelIndicator = ({
 				</div>
 				{/* A partir de md, mostre também quando o dispositivo foi atualizado */}
 				<div className="hidden md:block text-center p-3 bg-gray-50 rounded-xl shadow-md">
-					<div className="text-lg font-bold text-gray-600">{formattedDate.split(' ')[0]} {formattedDate.split(' ')[1]}</div>
-					<div className="text-xs text-gray-500">Atualizado em</div>
+					<div className="text-lg font-bold text-gray-600 flex items-center justify-center gap-2">
+						{isRefreshing && (
+							<div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+						)}
+						{formattedDate.split(' ')[0]} {formattedDate.split(' ')[1]}
+					</div>
+					<div className="text-xs text-gray-500">
+						{isRefreshing ? 'Atualizando...' : 'Atualizado em'}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -222,6 +262,8 @@ const ModernWaterLevelIndicator = ({
 export default function WaterLevelIndicator({
 	device,
 	dataDevice,
+	onRefresh,
+	isRefreshing = false,
 }: WaterLevelIndicatorProps) {
 	const { name, code, city, complement, district, number, street, zipCode } = device;
 
@@ -300,6 +342,8 @@ export default function WaterLevelIndicator({
 					code={code}
 					name={name}
 					formattedDate={formattedDate}
+					onRefresh={onRefresh}
+					isRefreshing={isRefreshing}
 				/>
 
 				{/* Grid de informações rápidas */}

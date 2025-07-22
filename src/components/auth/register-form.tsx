@@ -5,12 +5,12 @@ import { useRef, useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { register } from "../../../actions/register";
 import EyesOff from "../../../public/icons/eye-off.svg";
 import EyesOn from "../../../public/icons/eye-on.svg";
 import logo from "../../../public/images/logo.svg";
-import { signIn } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "../../../routes";
 
 interface Errors {
@@ -212,8 +212,8 @@ export function RegisterForm() {
 									onFocus={() => setErrors({ name: "", email: errors.email, password: "", confirmPassword: errors.confirmPassword })}
 									onBlur={validateName}
 									className={`w-full px-4 py-4 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${errors.name
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									type="text"
 									placeholder="Seu nome completo"
@@ -245,8 +245,8 @@ export function RegisterForm() {
 									onFocus={() => setErrors({ name: errors.name, email: "", password: errors.password, confirmPassword: errors.confirmPassword })}
 									onBlur={validateEmail}
 									className={`w-full px-4 py-4 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${errors.email
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									type="email"
 									placeholder="seu@email.com"
@@ -279,8 +279,8 @@ export function RegisterForm() {
 									onFocus={() => setErrors({ name: errors.name, email: errors.email, password: "", confirmPassword: errors.confirmPassword })}
 									onBlur={validatePassword}
 									className={`w-full px-4 py-4 pr-12 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${errors.password
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									placeholder="••••••••"
 									type={showPassword ? "text" : "password"}
@@ -325,8 +325,8 @@ export function RegisterForm() {
 									onFocus={() => setErrors({ name: errors.name, email: errors.email, password: errors.password, confirmPassword: "" })}
 									onBlur={validateConfirmPassword}
 									className={`w-full px-4 py-4 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${errors.confirmPassword
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									placeholder="••••••••"
 									type="password"

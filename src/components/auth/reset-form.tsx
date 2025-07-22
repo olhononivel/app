@@ -112,8 +112,8 @@ export function ResetForm() {
 									{...form.register("email")}
 									id="LoggingEmailAddress"
 									className={`w-full px-4 py-4 text-gray-700 bg-white/80 backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-0 ${form.formState.errors.email
-											? 'border-red-300 focus:border-red-500'
-											: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
+										? 'border-red-300 focus:border-red-500'
+										: 'border-gray-200 focus:border-blue-400 hover:border-gray-300'
 										}`}
 									type="email"
 									placeholder="seu@email.com"

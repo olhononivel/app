@@ -12,24 +12,40 @@ export default function Page() {
 	// pega dados na store
 	const selectedDevice = useDeviceStore((state) => state.selectedDevice);
 	const [isPending, startTransition] = useTransition();
+	const [isRefreshing, setIsRefreshing] = useState(false);
 	const [currentData, setCurrentData] = useState<CurrentDeviceDataType>({} as CurrentDeviceDataType);
 
-	useEffect(() => {
+	const fetchDeviceData = async () => {
 		if (!selectedDevice) {
 			toast.error("Dispositivo não encontrado!");
 			return;
 		}
 
+		try {
+			const response = await currentDeviceData(selectedDevice.id);
+			if (response.deviceData) {
+				setCurrentData(response.deviceData as CurrentDeviceDataType);
+			}
+		} catch {
+			toast.error("Erro ao buscar dados do dispositivo!");
+		}
+	};
+
+	const handleRefresh = async () => {
+		setIsRefreshing(true);
+		try {
+			await fetchDeviceData();
+			toast.success("Dados atualizados com sucesso!");
+		} catch {
+			toast.error("Erro ao atualizar dados!");
+		} finally {
+			setIsRefreshing(false);
+		}
+	};
+
+	useEffect(() => {
 		startTransition(() => {
-			currentDeviceData(selectedDevice.id)
-				.then((response) => {
-					if (response.deviceData) {
-						setCurrentData(response.deviceData as CurrentDeviceDataType);
-					}
-				})
-				.catch(() => {
-					toast.error("Erro ao buscar seus dispositivos!");
-				});
+			fetchDeviceData();
 		});
 	}, [selectedDevice]);
 
@@ -48,6 +64,11 @@ export default function Page() {
 	};
 
 	return (
-		<WaterLevelIndicator dataDevice={currentData} device={selectedDevice as Device} />
+		<WaterLevelIndicator
+			dataDevice={currentData}
+			device={selectedDevice as Device}
+			onRefresh={handleRefresh}
+			isRefreshing={isRefreshing}
+		/>
 	);
 }

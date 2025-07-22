@@ -31,12 +31,12 @@ export function Hero() {
 						{/* Título com gradiente moderno */}
 						<h1 className="text-4xl @sm:text-5xl @lg:text-4xl @xl:text-5xl font-black leading-tight">
 							<span className="bg-linear-to-r/oklch from-gray-900 via-blue-800 to-purple-900 bg-clip-text text-transparent">
-								Monitore o nível da sua
+								Olho no nível
 							</span>
-							<span className="block bg-linear-45/srgb from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
-								caixa d&apos;água
+							<span className="text-xl @sm:text-3xl @lg:text-2xl @xl:text-3xl block bg-linear-45/srgb from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
+								Monitore o nível da sua caixa d&apos;água
 							</span>
-							<span className="block text-gray-900 @lg:text-5xl">em tempo real</span>
+							<span className="block text-gray-900 text-xl @sm:text-3xl @lg:text-2xl @xl:text-3xl">em tempo real</span>
 						</h1>
 
 						{/* Descrição melhorada */}

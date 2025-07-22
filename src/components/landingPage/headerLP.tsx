@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-import logo from "../../../public/images/logo.svg";
 import { LoginButton } from "../auth/login-button";
+import Logo from "../logo";
 
 export function HeaderLP() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,14 +32,7 @@ export function HeaderLP() {
 						{/* Logo */}
 						<div className="flex-shrink-0">
 							<Link href="/" className="group block">
-								<Image
-									width={120}
-									height={40}
-									className="h-8 @lg:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-									src={logo}
-									alt="Olho no Nível"
-									priority
-								/>
+								<Logo />
 							</Link>
 						</div>
 
