@@ -42,7 +42,7 @@ export default function MonitoramentoRemoto() {
               <span className="text-gray-900">de qualquer lugar</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Acompanhe sua caixa d'água de qualquer lugar através do aplicativo móvel com dados em tempo real
+              Acompanhe sua caixa d&apos;água de qualquer lugar através do aplicativo móvel com dados em tempo real
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -158,7 +158,7 @@ export default function MonitoramentoRemoto() {
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-12 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Pronto para monitorar remotamente?</h2>
-          <p className="text-xl mb-8 opacity-90">Junte-se a milhares de usuários que já têm controle total da sua caixa d'água</p>
+          <p className="text-xl mb-8 opacity-90">Junte-se a milhares de usuários que já têm controle total da sua caixa d&apos;água</p>
           <Link
             href="/auth/register"
             className="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-bold rounded-2xl hover:bg-gray-100 transition-colors"

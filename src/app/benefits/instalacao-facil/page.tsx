@@ -85,7 +85,7 @@ export default function InstalacaoFacil() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Sem Furos</h3>
-                  <p className="text-gray-600">Instalação na tampa da caixa d'água sem necessidade de furos ou modificações.</p>
+                  <p className="text-gray-600">Instalação na tampa da caixa d&apos;água sem necessidade de furos ou modificações.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -111,7 +111,7 @@ export default function InstalacaoFacil() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4 bg-gray-50 rounded-xl p-4">
                   <div className="w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
-                  <span className="text-gray-700">Abra a caixa d'água</span>
+                  <span className="text-gray-700">Abra a caixa d&apos;água</span>
                 </div>
                 <div className="flex items-center gap-4 bg-gray-50 rounded-xl p-4">
                   <div className="w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
@@ -119,7 +119,7 @@ export default function InstalacaoFacil() {
                 </div>
                 <div className="flex items-center gap-4 bg-gray-50 rounded-xl p-4">
                   <div className="w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
-                  <span className="text-gray-700">Feche a caixa d'água</span>
+                  <span className="text-gray-700">Feche a caixa d&apos;água</span>
                 </div>
                 <div className="flex items-center gap-4 bg-green-50 rounded-xl p-4 border-2 border-green-200">
                   <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">4</div>
