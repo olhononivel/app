@@ -33,7 +33,7 @@ const faqItems = [
 	{
 		question: "Como faço para entrar em contato?",
 		answer:
-			"Para entrar em contato conosco, ligue para (62) 9 9999-9999 ou envie um e-mail para suporte@olhononivel.com.br. Nosso horário de atendimento é de segunda a sexta, das 8h às 18h."
+			"Para entrar em contato conosco, ligue para (62) 9 9650-1729 ou envie um e-mail para suporte@olhononivel.com.br. Nosso horário de atendimento é de segunda a sexta, das 8h às 18h."
 	}
 ];
 

@@ -1,4 +1,4 @@
-import { Benefits, Cta, Faq, Footer, HeaderLP, Hero, HowItWorks, Prices, Testimonials } from "@/components";
+import { Benefits, Cta, Faq, Footer, HeaderLP, Hero, HowItWorks, Testimonials } from "@/components";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -11,7 +11,7 @@ export default function Home() {
         <HowItWorks />
         <Benefits />
         <Testimonials />
-        <Prices />
+        {/* <Prices /> */}
         <Faq />
         <Cta />
         <Footer />

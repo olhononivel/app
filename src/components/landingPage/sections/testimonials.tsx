@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export function Testimonials() {
 	const testimonials = [
@@ -138,9 +139,9 @@ export function Testimonials() {
 						<p className="text-blue-100 mb-6 max-w-2xl mx-auto">
 							Comece hoje mesmo a monitorar sua caixa d&apos;água de forma inteligente e nunca mais se preocupe com falta de água.
 						</p>
-						<button className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+						<Link href="/auth/login" className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
 							Começar Agora
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

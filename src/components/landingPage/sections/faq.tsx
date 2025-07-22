@@ -20,11 +20,7 @@ export function Faq() {
 		},
 		{
 			question: "O sensor funciona em qualquer tipo de caixa d'água?",
-			answer: "Sim, nosso sensor é compatível com caixas d'água de fibra, polietileno, concreto e aço inox. Funciona em reservatórios de 500L até 10.000L."
-		},
-		{
-			question: "Quanto tempo dura a bateria?",
-			answer: "A bateria do sensor dura em média 3-5 anos, dependendo da frequência de transmissão configurada. Quando a bateria estiver baixa, você receberá um alerta com 30 dias de antecedência."
+			answer: "Sim, nosso sensor é compatível com caixas d'água de fibra, polietileno, concreto e aço inox. Funciona em reservatórios de qualquer tamanho."
 		},
 		{
 			question: "Posso monitorar múltiplas caixas d'água?",
@@ -35,8 +31,8 @@ export function Faq() {
 			answer: "O sensor não depende da sua internet local. Ele usa a rede LoRa que é independente. Os dados ficam armazenados e são sincronizados assim que a conectividade for restabelecida."
 		},
 		{
-			question: "Posso personalizar os alertas?",
-			answer: "Sim! Você pode configurar alertas para diferentes níveis (crítico, baixo, normal, alto), escolher o tipo de notificação (SMS, email, push) e definir horários específicos para receber os alertas."
+			question: "Os alertas chegam no meu celular?",
+			answer: "Sim! Os alertas chegam no seu celular via whatsapp e email."
 		},
 		{
 			question: "O sensor é resistente à chuva e sol?",
@@ -121,7 +117,7 @@ export function Faq() {
 								Enviar Email
 							</a>
 							<a
-								href="https://wa.me/5511999999999"
+								href="https://wa.me/5562996501729"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
