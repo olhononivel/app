@@ -117,7 +117,7 @@ export function Faq() {
 								Enviar Email
 							</a>
 							<a
-								href="https://wa.me/5562996501729"
+								href="https://wa.me/5562998084683"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"

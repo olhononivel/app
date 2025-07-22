@@ -48,7 +48,7 @@ const cookies = {
     },
     {
       title: "11. Contato",
-      content: "Se você tiver dúvidas sobre nossa Política de Cookies, entre em contato conosco pelo e-mail: suporte@olhononivel.com.br ou WhatsApp: (11) 99650-1729."
+      content: "Se você tiver dúvidas sobre nossa Política de Cookies, entre em contato conosco pelo e-mail: suporte@olhononivel.com.br ou WhatsApp: (11) 99808-4683."
     }
   ]
 };

@@ -44,7 +44,7 @@ const policy = {
     },
     {
       title: "10. Contato",
-      content: "Em caso de dúvidas sobre esta Política de Privacidade ou sobre o tratamento de seus dados, entre em contato pelo e-mail: suporte@olhononivel.com.br ou WhatsApp: (62) 9 9650-1729."
+      content: "Em caso de dúvidas sobre esta Política de Privacidade ou sobre o tratamento de seus dados, entre em contato pelo e-mail: suporte@olhononivel.com.br ou WhatsApp: (62) 9 9808-4683."
     }
   ]
 };

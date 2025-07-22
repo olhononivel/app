@@ -65,7 +65,7 @@ const terms = {
 		},
 		{
 			title: "15. Contato",
-			content: "Para dúvidas sobre estes Termos e Condições, entre em contato conosco através do email: suporte@olhononivel.com.br ou pelo WhatsApp: (62) 9 9650-1729. Nossa equipe de suporte está disponível para esclarecer qualquer questão sobre o uso do sistema."
+			content: "Para dúvidas sobre estes Termos e Condições, entre em contato conosco através do email: suporte@olhononivel.com.br ou pelo WhatsApp: (62) 9 9808-4683. Nossa equipe de suporte está disponível para esclarecer qualquer questão sobre o uso do sistema."
 		}
 	]
 };

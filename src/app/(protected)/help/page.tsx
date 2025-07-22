@@ -24,7 +24,7 @@ const ContactCard = () => (
 			{/* Opções de contato */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 				<Link
-					href="tel:+5562996501729"
+					href="tel:+5562998084683"
 					className="flex items-center justify-center gap-2 bg-white text-blue-600 border border-blue-200 px-4 py-3 rounded-xl font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm"
 				>
 					<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@ const ContactCard = () => (
 			{/* Número de telefone destacado */}
 			<div className="mt-4 p-3 bg-white/60 rounded-xl">
 				<span className="text-blue-700 font-semibold text-lg">
-					(62) 9 9650-1729
+					(62) 9 9808-4683
 				</span>
 				<p className="text-blue-600 text-xs mt-1">
 					Seg a Sex • 8h às 18h
