@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function HowItWorks() {
 	const steps = [
@@ -148,12 +149,14 @@ export function HowItWorks() {
 							{/* CTA */}
 							<div className="mt-8">
 								<button className="group px-6 py-3 bg-linear-to-r from-green-600 to-blue-600 text-white font-semibold rounded-2xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 transform hover:scale-105 transition-all duration-300">
-									<span className="flex items-center">
-										Ver Especificações
-										<svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-										</svg>
-									</span>
+									<Link href="/auth/login">
+										<span className="flex items-center">
+											Monitorar agora
+											<svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+											</svg>
+										</span>
+									</Link>
 								</button>
 							</div>
 						</div>
