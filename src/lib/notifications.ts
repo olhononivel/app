@@ -4,6 +4,7 @@
  */
 
 import { sendEmailAlert } from "./mail";
+import { sendWhatsAppAlert } from "./whatsapp";
 
 interface User {
   id: string;
@@ -44,10 +45,10 @@ const sendNotificationToUser = async (user: User, data: NotificationData) => {
   }
 
   // Envio do WhatsApp (se usuário tem telefone configurado)
-  if (user.phone) {
+  const isLocal = process.env.NODE_ENV === 'development';
+  if (user.phone && !isLocal) {
     try {
-      // TODO: Descomentar quando o WhatsApp estiver funcionando
-      // await sendWhatsAppAlert(user.phone, data.deviceCode, data.deviceName, data.level, data.pumpFail);
+      await sendWhatsAppAlert(user.phone, data.deviceCode, data.deviceName, data.level, data.pumpFail);
       results.whatsapp.success = true;
       results.whatsapp.sent = true;
     } catch (error) {
